@@ -1,0 +1,323 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Net;
+using System.Xml;
+using System.IO;
+using HtmlAgilityPack;
+namespace Canadian_Derivatives_Exchange
+{
+class Program
+{
+static void Main(string[] args)
+{
+/*
+// Requirement # 1 Beginning
+Console.WriteLine("Beginning Requirement 1...");
+for (int i = 1; i < 250; i = i + 1)
+{
+using (var web = new WebClient())
+{
+if (i < 10)
+{
+var link = "https://m-x.ca/f_circulaires_en/00" + Convert.ToString(i) + "-17_Annx.xlsx";
+if (RemoteFileExists(link) == true)
+{
+web.DownloadFile(link, @"C:\Users\tranwi\Desktop\Derivatives\Files\Position Limits\" + Convert.ToString(i) + "-17_Annx.xlsx");
+Console.WriteLine("Downloaded " + Convert.ToString(i) + "-17_Annx.xlsx");
+}
+else
+{
+continue;
+}
+}
+else if (i < 100)
+{
+var link = "https://m-x.ca/f_circulaires_en/0" + i + "-17_Annx.xlsx";
+if (RemoteFileExists(link) == true)
+{
+web.DownloadFile(link, @"C:\Users\tranwi\Desktop\Derivatives\Files\Position Limits\" + Convert.ToString(i) + "-17_Annx.xlsx");
+Console.WriteLine("Downloaded " + Convert.ToString(i) + "-17_Annx.xlsx");
+}
+else
+{
+continue;
+}
+}
+else
+{
+var link = "https://m-x.ca/f_circulaires_en/" + i + "-17_Annx.xlsx";
+if (RemoteFileExists(link) == true)
+{
+web.DownloadFile(link, @"C:\Users\tranwi\Desktop\Derivatives\Files\Position Limits\" + Convert.ToString(i) + "-17_Annx.xlsx");
+Console.WriteLine("Downloaded " + Convert.ToString(i) + "-17_Annx.xlsx");
+}
+else
+{
+continue;
+}
+}
+}
+}
+Console.WriteLine("End of Requirement 1...");
+// Requirement #1 End
+// Requirement #2 Beginning
+Console.WriteLine("Beginning Requirement 2...");
+for (int j = 1; j < 13; j = j + 1)
+{
+if (j < 10)
+{
+using (var wb = new WebClient())
+{
+for (int k = 1; k < 32; k = k + 1)
+{
+if (k < 10)
+{
+var page = "https://reg.m-x.ca/en/lopr/bond_future_position_limit_file/date/2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k);
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Bond Future Position\" + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".xls");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".xls");
+}
+else
+{
+continue;
+}
+}
+else
+{
+var page = "https://reg.m-x.ca/en/lopr/bond_future_position_limit_file/date/2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k);
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Bond Future Position\" + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".xls");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".xls");
+}
+else
+{
+continue;
+}
+}
+}
+}
+}
+else
+{
+using (var wb = new WebClient())
+{
+for (int k = 1; k < 32; k = k + 1)
+{
+if (k < 10)
+{
+var page = "https://reg.m-x.ca/en/lopr/bond_future_position_limit_file/date/2017-" + Convert.ToString(j) + "-0" + Convert.ToString(k);
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Bond Future Position\" + "2017-" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".xls");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".xls");
+}
+else
+{
+continue;
+}
+}
+else
+{
+var page = "https://reg.m-x.ca/en/lopr/bond_future_position_limit_file/date/2017-" + Convert.ToString(j) + "-" + Convert.ToString(k);
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Bond Future Position\" + "2017-" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".xls");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".xls");
+}
+else
+{
+continue;
+}
+}
+}
+}
+}
+}
+Console.WriteLine("End of Requirement 2...");
+// Requirement #2 End
+// Requirement #3 Beginning
+Console.WriteLine("Beginning Requirement 3...");
+for (int j = 1; j < 13; j = j + 1)
+{
+if (j < 10)
+{
+using (var wb = new WebClient())
+{
+for (int k = 1; k < 32; k = k + 1)
+{
+if (k < 10)
+{
+var page = "https://reg.m-x.ca/en/regulation/futures_margins_file/date/2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + "/type/csv";
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Futures Margins\" + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".csv");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".csv");
+}
+else
+{
+continue;
+}
+}
+else
+{
+var page = "https://reg.m-x.ca/en/regulation/futures_margins_file/date/2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + "/type/csv";
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Futures Margins\" + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".csv");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".csv");
+}
+else
+{
+continue;
+}
+}
+}
+}
+}
+else
+{
+using (var wb = new WebClient())
+{
+for (int k = 1; k < 32; k = k + 1)
+{
+if (k < 10)
+{
+var page = "https://reg.m-x.ca/en/regulation/futures_margins_file/date/2017-" + Convert.ToString(j) + "-0" + Convert.ToString(k) + "/type/csv";
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Futures Margins\" + "2017-" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".csv");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-0" + Convert.ToString(k) + ".csv");
+}
+else
+{
+continue;
+}
+}
+else
+{
+var page = "https://reg.m-x.ca/en/regulation/futures_margins_file/date/2017-" + Convert.ToString(j) + "-" + Convert.ToString(k) + "/type/csv";
+if (RemoteFileExists(page) == true)
+{
+wb.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Futures Margins\" + "2017-" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".csv");
+Console.WriteLine("Downloaded " + "2017-0" + Convert.ToString(j) + "-" + Convert.ToString(k) + ".csv");
+}
+else
+{
+continue;
+}
+}
+}
+}
+}
+}
+Console.WriteLine("End of Requirement 3...");
+// Requirement #3 Ending
+*/
+// New Requirement #1
+Console.WriteLine("Beginning Requirement 1...");
+WebClient webClient = new WebClient();
+string website = webClient.DownloadString("http://m-x.ca/publi_circulaires_en.php");
+HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+doc.LoadHtml(website);
+List<List<string>> table = doc.DocumentNode.SelectSingleNode("//table[@class='grid']")
+.Descendants("tr")
+.Skip(1)
+.Where(tr => tr.Elements("td").Count() > 1)
+.Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
+.ToList();
+// Output the list on console
+foreach (var list in table)
+{
+//enumerate the inner list
+foreach (var item in list)
+{
+if (item.Contains("Position Limits") == true & item.Contains("Futures") == true & item.Contains("Annex 1"))
+{
+//output the actual item
+using (var web = new WebClient())
+{
+var page = "https://m-x.ca/f_circulaires_en/" + list[1] + "_Annx.xlsx";
+web.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Position Limits\" + list[0] + "_" + list[1] + "_Annx.xlsx");
+Console.WriteLine("Downloaded " + list[0] + "_" + list[1] + "_Annx.xlsx");
+}
+}
+}
+}
+Console.WriteLine("End of Requirement 1");
+// End of New Requirement #1
+// New Requirement #2
+Console.WriteLine("Beginning Requirement 2...");
+string website2 = webClient.DownloadString("http://reg.m-x.ca/en/lopr/bond_future_position_limit");
+doc.LoadHtml(website2);
+List<List<string>> table2 = doc.DocumentNode.SelectSingleNode("//table[@class = 'circulars files']")
+.Descendants("tr")
+.Skip(1)
+.Where(tr => tr.Elements("td").Count() > 1)
+.Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
+.ToList();
+// Output the list on console
+foreach (var list2 in table2)
+{
+string date = list2[0].Substring(0,10);
+using (var web = new WebClient())
+{
+var page = "https://reg.m-x.ca/en/lopr/bond_future_position_limit_file/date/" + date;
+web.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Bond Future Position\" + list2[1]);
+Console.WriteLine("Downloaded " + list2[1]);
+}
+}
+Console.WriteLine("End of Requirement 2");
+// End of New Requirement #2
+// New Requirement #3
+Console.WriteLine("Beginning Requirement 3...");
+string website3 = webClient.DownloadString("http://reg.m-x.ca/en/regulation/futures_margins");
+doc.LoadHtml(website3);
+List<List<string>> table3 = doc.DocumentNode.SelectSingleNode("//table[@class = 'circulars files']")
+.Descendants("tr")
+.Skip(1)
+.Where(tr => tr.Elements("td").Count() > 1)
+.Select(tr => tr.Elements("td").Select(td => td.InnerText.Trim()).ToList())
+.ToList();
+// Output the list on console
+foreach (var list3 in table3)
+{
+using (var web = new WebClient())
+{
+var page = "https://reg.m-x.ca/en/regulation/futures_margins_file/date/" + list3[0] + "/type/csv";
+web.DownloadFile(page, @"C:\Users\tranwi\Desktop\Derivatives\Files\Futures Margins\" + "Margin Rates_" + list3[0] + ".csv");
+Console.WriteLine("Downloaded " + "Margin Rates_" + list3[0] + ".csv");
+}
+}
+}
+static private bool RemoteFileExists(string url)
+{
+try
+{
+//Creating the HttpWebRequest
+HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+//Setting the Request method HEAD, you can also use GET too.
+request.Method = "HEAD";
+//Getting the Web Response.
+HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+//Returns TRUE if the Status code == 200
+response.Close();
+return (response.StatusCode == HttpStatusCode.OK);
+}
+catch
+{
+//Any exception will returns false.
+return false;
+}
+}
+private static void DownloadFile(string url, string p)
+{
+throw new NotImplementedException();
+}
+}
+}
